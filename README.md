@@ -1,31 +1,15 @@
 - 👋 Hi, I’m @RusselQA
-var html = require('choo/html')
-var devtools = require('choo-devtools')
-var choo = require('choo')
 
-var app = choo()
-app.use(devtools())
-app.use(countStore)
-app.route('/', mainView)
-app.mount('body')
-
-function mainView (state, emit) {
-  return html`
-    <body>
-      <h1>count is ${state.count}</h1>
-      <button onclick=${onclick}>Increment</button>
-    </body>
-  `
-
-  function onclick () {
-    emit('increment', 1)
-  }
-}
-
-function countStore (state, emitter) {
-  state.count = 0
-  emitter.on('increment', function (count) {
-    state.count += count
-    emitter.emit('render')
-  })
-}
+<dependencies>
+    <dependency>
+        <groupId>org.hexworks.zircon</groupId>
+        <artifactId>zircon.core-jvm</artifactId>
+        <version>2021.1.0-RELEASE</version>
+    </dependency>
+    <!-- use zircon.jvm.libgdx if you want to use LibGDX instead of Swing -->
+    <dependency>
+        <groupId>org.hexworks.zircon</groupId>
+        <artifactId>zircon.jvm.swing</artifactId>
+        <version>2021.1.0-RELEASE</version>
+    </dependency>
+</dependencies>
